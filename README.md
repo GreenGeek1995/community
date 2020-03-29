@@ -12,9 +12,14 @@
 [Github OAuth](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
 
 [Spring](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/)
+
+[thymeleaf](https://www.thymeleaf.org/)
 ## 工具
 [Git](https://git-scm.com/download)
 
+[Flyway](https://flywaydb.org/)
+
+[lombok](https://projectlombok.org/)
 ## 脚本
 ```sql
 create table USER
@@ -28,6 +33,8 @@ create table USER
 	constraint USER_PK
 		primary key (ID)
 );
-
-
+```
+```sql
+mvn flyway:migrate
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
