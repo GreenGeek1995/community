@@ -20,7 +20,7 @@ public class CustomizeExceptionHandler {
     ModelAndView handle(HttpServletRequest request, HttpServletResponse response,Throwable e, Model model) {
 
         String contentType = request.getContentType();
-        if("application.json".equals(contentType)){
+        if("application/json".equals(contentType)){
             ResultDTO resultDTO;
             //返回json
             if(e instanceof CustomizeException){
@@ -37,7 +37,7 @@ public class CustomizeExceptionHandler {
                 writer.write(JSON.toJSONString(resultDTO));
                 writer.close();
             } catch (IOException ioe) {
-                ioe.printStackTrace();
+
             }
             return null;
         }else {

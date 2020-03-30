@@ -129,7 +129,7 @@ public class QuestionService {
         if(question.getId() == null){
             //创建新的话题
             question.setGmtCreate(System.currentTimeMillis());
-            question.setGmtModified(question.getGmtCreate());
+            question.setGmtModified(System.currentTimeMillis());
             question.setViewCount(0);
             question.setLikeCount(0);
             question.setCommentCount(0);
