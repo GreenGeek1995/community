@@ -72,8 +72,6 @@ public class PublishController {
         question.setDescription(description);
         question.setTag(tag);
         question.setCreator(user.getId());
-        System.out.println(user.getId());
-        System.out.println(question.getCreator());
         question.setId(id);
         questionService.createOrUpdate(question);
         return "redirect:/";
