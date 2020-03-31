@@ -4,10 +4,7 @@ import com.dj.dto.CommentDTO;
 import com.dj.enums.CommentTypeEnum;
 import com.dj.exception.CustomizeErrorCode;
 import com.dj.exception.CustomizeException;
-import com.dj.mapper.CommentMapper;
-import com.dj.mapper.QuestionExtMapper;
-import com.dj.mapper.QuestionMapper;
-import com.dj.mapper.UserMapper;
+import com.dj.mapper.*;
 import com.dj.model.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +31,8 @@ public class CommentService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private CommentExtMapper commentExtMapper;
     @Transactional
     public void insert(Comment comment) {
         if(comment.getParentId()==null || comment.getParentId()==0){
@@ -51,6 +50,12 @@ public class CommentService {
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }else {
                 commentMapper.insert(comment);
+
+                //增加评论数
+                Comment parentComment = new Comment();
+                parentComment.setId(comment.getParentId());
+                parentComment.setCommentCount(1);
+                commentExtMapper.intCommentCount(parentComment);
             }
         }else {
             //回复问题
@@ -64,7 +69,7 @@ public class CommentService {
     }
 }
 
-    public List<CommentDTO> ListByQuestionId(Long id, CommentTypeEnum type) {
+    public List<CommentDTO> ListByTargetId(Long id, CommentTypeEnum type) {
         CommentExample commentExample = new CommentExample();
         commentExample.createCriteria().andParentIdEqualTo(id).andTypeEqualTo(type.getType());
         commentExample.setOrderByClause("gmt_create desc");

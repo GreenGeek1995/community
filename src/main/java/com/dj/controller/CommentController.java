@@ -6,7 +6,6 @@ import com.dj.dto.ResultDTO;
 import com.dj.enums.CommentTypeEnum;
 import com.dj.exception.CustomizeErrorCode;
 import com.dj.model.Comment;
-import com.dj.model.CommentExample;
 import com.dj.model.User;
 import com.dj.service.CommentService;
 import org.apache.commons.lang3.StringUtils;
@@ -45,14 +44,15 @@ public class CommentController {
         comment.setGmtModified(System.currentTimeMillis());
         comment.setCommentator(user.getId());
         comment.setLikeCount(0L);
+        comment.setCommentCount(0);
         commentService.insert(comment);
         return ResultDTO.okOf();
     }
 
     @ResponseBody
-    @RequestMapping(value = "/comments/{id}",method = RequestMethod.GET)
-    public ResultDTO comments(@PathVariable(name = "id") Long id){
-        List<CommentDTO> commentDTOS = commentService.ListByQuestionId(id, CommentTypeEnum.COMMENT);
-        return null;
+    @RequestMapping(value = "/comment/{id}",method = RequestMethod.GET)
+    public ResultDTO<List> comments(@PathVariable(name = "id") Long id){
+        List<CommentDTO> commentDTOS = commentService.ListByTargetId(id, CommentTypeEnum.COMMENT);
+        return ResultDTO.okOf(commentDTOS);
     }
 }

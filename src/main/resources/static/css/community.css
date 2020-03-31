@@ -87,6 +87,15 @@
     cursor: pointer;
 }
 
+.menu .comment-icon{
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu .comment-icon:hover{
+    color: #499ef3;
+}
+
 .menu .active{
     color: #499ef3;
 }
@@ -95,3 +104,18 @@
     color: #499ef3;
 }
 
+.question-tag{
+    margin-right: 5px;
+}
+
+.question-related{
+    line-height: 20px;
+    font-size: 12px;
+    margin-left: 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+.question-wechat{
+    width: 200px;
+}
