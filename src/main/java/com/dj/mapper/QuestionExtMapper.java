@@ -1,5 +1,6 @@
 package com.dj.mapper;
 
+import com.dj.dto.QuestionQueryDTO;
 import com.dj.model.Question;
 import com.dj.model.QuestionExample;
 import org.apache.ibatis.annotations.Param;
@@ -20,4 +21,8 @@ public interface QuestionExtMapper {
     int intCommentCount(@Param("record") Question record);
 
     List<Question> selectRelated(@Param("record") Question record);
+
+    Integer countBySearch(@Param("record") QuestionQueryDTO questionQueryDTO);
+
+    List<Question> selectBySearch(@Param("record") QuestionQueryDTO questionQueryDTO);
 }

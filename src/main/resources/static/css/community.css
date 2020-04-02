@@ -135,3 +135,8 @@
     cursor: pointer;
     color: #499ef3;
 }
+
+.footer{
+    padding: 10px 25%;
+    color: #666;
+}
