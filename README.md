@@ -1,5 +1,24 @@
 ## 极客社区
 
+## 部署
+### 依赖
+- Git
+- JDK
+- Maven
+- MySQL 
+## 步骤
+- yum update
+- yum install git
+- /root mkdir App
+- cd App
+- git clone https://github.com/GreenGeek1995/community.git
+- yum install maven
+- mvn -v
+- mvn compile package
+- 在src目录下复制application.properties为application-production.properties
+- 用vim编辑application-production.properties的配置
+- mvn package
+
 ## 资料
 [Spring 文档](https://spring.io/guides)
 

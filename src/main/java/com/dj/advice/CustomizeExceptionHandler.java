@@ -46,6 +46,7 @@ public class CustomizeExceptionHandler {
                 model.addAttribute("message",e.getMessage());
             }else {
                 model.addAttribute("message",CustomizeErrorCode.SYS_ERROR.getMessage());
+                //model.addAttribute("message",e.getMessage());
             }
             return new ModelAndView("error");
         }
