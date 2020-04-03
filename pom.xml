@@ -66,6 +66,12 @@
         </dependency>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
@@ -109,11 +115,16 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>6.3.1</version>
                 <configuration>
-                    <url>jdbc:h2:~/community</url>
+                    <url>jdbc:mysql://localhost:3306/greengeek</url>
                     <user>root</user>
                     <password>8656027dj</password>
                 </configuration>
                 <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.16</version>
+                    </dependency>
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
