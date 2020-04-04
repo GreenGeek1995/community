@@ -137,6 +137,8 @@
 }
 
 .footer{
+    position: fixed;
+    bottom: 0;
     padding-left: 30%;
     color: #666;
 }
